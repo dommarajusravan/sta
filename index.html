@@ -839,6 +839,20 @@
         });
 
         // Function to randomly scatter the images without overlap
+        function scatterImages() {
+            const gallery = document.getElementById('adminGallery');
+            const items = gallery.querySelectorAll('.admin-item');
+            const imageSize = 150; // Size of each image (square)
+            const margin = 20; // Margin between images to avoid overlap
+            const positions = []; // To keep track of used positions
+
+            // Function to check if the new position overlaps with any existing image
+            function checkOverlap(x, y) {
+                for (let i = 0; i < positions.length; i++) {
+                    const pos = positions[i];
+                    const dx = x - pos.x;
+                    const dy = y - pos.y;
+                    const distance = Math.sqrt(dx * dx + dy * dy);
                     if (distance < imageSize + margin) { // Checking if distance is less than the size of the image plus margin
                         return true;
                     }
