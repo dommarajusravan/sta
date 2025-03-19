@@ -842,50 +842,47 @@
         function scatterImages() {
             const gallery = document.getElementById('adminGallery');
             const items = gallery.querySelectorAll('.admin-item');
-            const imageSize = 150; // Size of each image (square)
-            const margin = 20; // Margin between images to avoid overlap
-            const positions = []; // To keep track of used positions
-
-            // Function to check if the new position overlaps with any existing image
+            const imageSize = 150; // Image size (square)
+            const margin = 20; // Margin to avoid overlap
+            const positions = []; // To track used positions
+        
+            // Use more reliable height and width values
+            const availableWidth = document.documentElement.clientWidth - imageSize - margin;
+            const availableHeight = document.documentElement.clientHeight - imageSize - margin;
+        
             function checkOverlap(x, y) {
-                for (let i = 0; i < positions.length; i++) {
-                    const pos = positions[i];
+                for (let pos of positions) {
                     const dx = x - pos.x;
                     const dy = y - pos.y;
                     const distance = Math.sqrt(dx * dx + dy * dy);
-                    if (distance < imageSize + margin) { // Checking if distance is less than the size of the image plus margin
+                    if (distance < imageSize + margin) {
                         return true;
                     }
                 }
                 return false;
             }
-
-            // Loop to randomly place each image
+        
             items.forEach(item => {
-                let x, y;
-                let isValidPosition = false;
-
+                let x, y, isValidPosition = false;
+        
                 while (!isValidPosition) {
-                    // Randomly position each image
-                    x = Math.floor(Math.random() * (window.innerWidth - imageSize)); // Random horizontal position
-                    y = Math.floor(Math.random() * (window.innerHeight - imageSize)); // Random vertical position
-
-                    // Check if the position overlaps with any existing image
+                    x = Math.floor(Math.random() * availableWidth);
+                    y = Math.floor(Math.random() * availableHeight);
+        
                     if (!checkOverlap(x, y)) {
                         isValidPosition = true;
-                        positions.push({x, y});
+                        positions.push({ x, y });
                     }
                 }
-
-                // Apply the position to the image item
-                item.style.position = 'absolute';
+        
+                item.style.position = 'fixed'; // Ensures items remain visible when scrolling
                 item.style.left = `${x}px`;
                 item.style.top = `${y}px`;
             });
         }
-
-        // Call scatterImages on page load
+        
         window.onload = scatterImages;
+        window.onresize = scatterImages; // Adjust layout on screen resize
     </script>
 
     <!-- Bootstrap JS for Navbar -->
