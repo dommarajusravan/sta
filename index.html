@@ -457,6 +457,7 @@
             box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
             transition: transform 0.3s ease-in-out;
             cursor: pointer;
+            visibility: hidden;
         }
 
         /* Styling for images */
@@ -881,6 +882,7 @@
                 item.style.position = 'absolute';
                 item.style.left = `${x}px`;
                 item.style.top = `${y}px`;
+                item.style.visibility = 'visible';
             });
         }
 
