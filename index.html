@@ -430,14 +430,22 @@
         }
 
 
-        /* Contact Section */
+        /* Contact Section 
         .contact-container {
             display: block;  /* Prevents flexbox layout */
             text-align: center;
             margin: 1rem auto;
             width: 100%;
-        }
+            flex-wrap: wrap;
+        } */
+.contact-container {
+    display: block;  /* Prevents flexbox layout */
+    text-align: center;
+    margin: 1rem auto;
+    width: 100%;
+}
 
+        
         /* About */
         /* Admin gallery container */
         .admin-gallery {
@@ -498,6 +506,7 @@
             padding: 20px;
             font-size: 1rem;
         }
+
 </style>
 </head>
 
@@ -809,12 +818,10 @@
 
     </div>   
     </section>
-
-    <!-- Footer Section -->
-    <footer class="footer">
-        <p>&copy; 2025 Southend Telugu Association | All Rights Reserved</p>
-    </footer>
-
+        <!-- Footer Section -->
+        <footer class="footer">
+            <p>&copy; 2025 Southend Telugu Association | All Rights Reserved</p>
+        </footer>
     <!-- ScrollReveal Animation -->
     <script>
         // Initialize ScrollReveal
