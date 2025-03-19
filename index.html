@@ -6,10 +6,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="icon" href="images/STA-logo.png" type="image/x-icon">
     <title>STA - SOUTHEND TELUGU ASSOCIATION</title>
-
-    <!-- ScrollReveal CDN -->
-    <script src="https://unpkg.com/scrollreveal"></script>
-
     <!-- Bootstrap 5 CDN (for layout and responsive design) -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
 
@@ -827,69 +823,13 @@
         <p>&copy; 2025 Southend Telugu Association | All Rights Reserved</p>
     </footer>
 
-    <!-- ScrollReveal Animation -->
-    <script>
-        // Initialize ScrollReveal
-        ScrollReveal().reveal('.service', {
-            duration: 1000,
-            distance: '50px',
-            origin: 'bottom',
-            delay: 200,
-            opacity: 0,
-            easing: 'ease-in-out'
-        });
 
-        ScrollReveal().reveal('.form', {
-            duration: 1000,
-            distance: '50px',
-            origin: 'bottom',
-            delay: 400,
-            opacity: 0,
-            easing: 'ease-in-out'
-        });
-
-        // Function to randomly scatter the images without overlap
-        function scatterImages() {
-            const gallery = document.getElementById('adminGallery');
-            const items = gallery.querySelectorAll('.admin-item');
-            const imageSize = 150;
-            const margin = 20;
-            const positions = [];
-        
-            const maxHeight = gallery.offsetHeight - imageSize - margin; // Prevents overflow beyond the gallery
-        
-            function checkOverlap(x, y) {
-                return positions.some(pos => {
-                    const dx = x - pos.x;
-                    const dy = y - pos.y;
-                    return Math.sqrt(dx * dx + dy * dy) < imageSize + margin;
-                });
-            }
-        
-            items.forEach(item => {
-                let x, y, isValidPosition = false;
-                while (!isValidPosition) {
-                    x = Math.random() * (window.innerWidth - imageSize);
-                    y = Math.random() * Math.min(window.innerHeight - imageSize, maxHeight); // Ensure images stay within bounds
-                    if (!checkOverlap(x, y)) {
-                        isValidPosition = true;
-                        positions.push({ x, y });
-                    }
-                }
-        
-                item.style.position = 'absolute';
-                item.style.left = `${x}px`;
-                item.style.top = `${y}px`;
-                item.style.visibility = 'visible';
-            });
-        }
-        
-        window.onload = scatterImages;
-    </script>
-
+    <script src="admin-images-scatter.js" async></script>
+    <!-- ScrollReveal CDN -->
+    <script src="https://unpkg.com/scrollreveal" async></script>
     <!-- Bootstrap JS for Navbar -->
-    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js" async></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.min.js" async></script>
 
 </body>
 
