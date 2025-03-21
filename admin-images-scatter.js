@@ -19,12 +19,24 @@
     // Function to randomly scatter the images without overlap
     function scatterImages() {
         const gallery = document.getElementById('adminGallery');
-        const items = gallery.querySelectorAll('.admin-item');
-        const imageSize = 150;
-        const margin = 20;
+        if (!gallery) return;
+    
+        const items = Array.from(gallery.querySelectorAll('.admin-item'));
+        const imageSize = 180; // Match CSS
+        const margin = 30;
         const positions = [];
     
-        const maxHeight = gallery.offsetHeight - imageSize - margin; // Prevents overflow beyond the gallery
+        // Ensure gallery has enough height
+        const containerWidth = gallery.clientWidth;
+        const containerHeight = Math.max(gallery.clientHeight, window.innerHeight);
+    
+        // Adjust height dynamically based on number of images
+        gallery.style.minHeight = `${containerHeight}px`;
+    
+        const minX = margin;
+        const minY = margin;
+        const maxX = containerWidth - imageSize - margin;
+        const maxY = containerHeight - imageSize - margin;
     
         function checkOverlap(x, y) {
             return positions.some(pos => {
@@ -36,20 +48,28 @@
     
         items.forEach(item => {
             let x, y, isValidPosition = false;
-            while (!isValidPosition) {
-                x = Math.random() * (window.innerWidth - imageSize);
-                y = Math.random() * Math.min(window.innerHeight - imageSize, maxHeight); // Ensure images stay within bounds
+            let attempts = 0;
+    
+            while (!isValidPosition && attempts < 1000) {
+                x = Math.random() * (maxX - minX) + minX;
+                y = Math.random() * (maxY - minY) + minY;
+    
                 if (!checkOverlap(x, y)) {
                     isValidPosition = true;
                     positions.push({ x, y });
                 }
+                attempts++;
             }
     
-            item.style.position = 'absolute';
-            item.style.left = `${x}px`;
-            item.style.top = `${y}px`;
-            item.style.visibility = 'visible';
+            if (isValidPosition) {
+                item.style.left = `${x}px`;
+                item.style.top = `${y}px`;
+                item.style.visibility = "visible"; // Ensure visibility after positioning
+            }
         });
     }
     
-    window.onload = scatterImages;
+    // Run on page load & window resize
+    window.addEventListener("load", scatterImages);
+    window.addEventListener("resize", scatterImages);
+
