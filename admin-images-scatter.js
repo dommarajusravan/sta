@@ -22,20 +22,18 @@
         if (!gallery) return;
     
         const items = Array.from(gallery.querySelectorAll('.admin-item'));
-        let imageSize = window.innerWidth < 600 ? 120 : 180; // Smaller images for mobile
+        let imageSize = window.innerWidth < 600 ? 120 : 180;
         let margin = window.innerWidth < 600 ? 15 : 30;
         const positions = [];
     
-        // Ensure gallery height is dynamic
-        const containerWidth = gallery.clientWidth;
-        const containerHeight = Math.max(gallery.clientHeight, window.innerHeight);
-    
-        gallery.style.minHeight = `${containerHeight}px`;
+        // **Adjust gallery height dynamically based on image count**
+        const estimatedHeight = Math.max(window.innerHeight, (items.length / 2) * (imageSize + margin));
+        gallery.style.minHeight = `${estimatedHeight}px`;
     
         const minX = margin;
         const minY = margin;
-        const maxX = containerWidth - imageSize - margin;
-        const maxY = containerHeight - imageSize - margin;
+        const maxX = gallery.clientWidth - imageSize - margin;
+        const maxY = estimatedHeight - imageSize - margin;
     
         function checkOverlap(x, y) {
             return positions.some(pos => {
@@ -49,7 +47,7 @@
             let x, y, isValidPosition = false;
             let attempts = 0;
     
-            while (!isValidPosition && attempts < 500) { // Limit attempts to prevent infinite loops
+            while (!isValidPosition && attempts < 500) {
                 x = Math.random() * (maxX - minX) + minX;
                 y = Math.random() * (maxY - minY) + minY;
     
@@ -65,14 +63,17 @@
                 item.style.height = `${imageSize}px`;
                 item.style.left = `${x}px`;
                 item.style.top = `${y}px`;
-                item.style.visibility = "visible"; // Ensure visibility after positioning
+                item.style.visibility = "visible";
             }
         });
+    
+        // Adjust footer margin to prevent images from being hidden
+        document.querySelector(".footer").style.marginTop = "150px";
     }
     
     // Run on load & resize
     window.addEventListener("load", scatterImages);
     window.addEventListener("resize", scatterImages);
-    window.addEventListener("orientationchange", scatterImages); // Ensures proper layout on screen rotation
+    window.addEventListener("orientationchange", scatterImages);
 
 
