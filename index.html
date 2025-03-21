@@ -450,10 +450,11 @@
         .admin-gallery {
             position: relative;
             width: 100%;
-            min-height: 1000px; /* Adjust as needed */
+            min-height: 100vh; /* Ensures the section is always at least full-screen */
             overflow: hidden;
+            padding-bottom: 100px; /* Prevents overlap with footer */
         }
-
+        
         /* Styling for each admin image item */
         .admin-item {
             width: 180px;
@@ -463,7 +464,8 @@
             box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
             transition: transform 0.3s ease-in-out;
             cursor: pointer;
-            visibility: hidden;
+            position: absolute; /* Important to scatter inside container */
+            visibility: hidden; /* Initially hidden, made visible after positioning */
         }
 
         /* Styling for images */
