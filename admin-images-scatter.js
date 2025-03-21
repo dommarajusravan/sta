@@ -22,15 +22,14 @@
         if (!gallery) return;
     
         const items = Array.from(gallery.querySelectorAll('.admin-item'));
-        const imageSize = 180; // Match CSS
-        const margin = 30;
+        let imageSize = window.innerWidth < 600 ? 120 : 180; // Smaller images for mobile
+        let margin = window.innerWidth < 600 ? 15 : 30;
         const positions = [];
     
-        // Ensure gallery has enough height
+        // Ensure gallery height is dynamic
         const containerWidth = gallery.clientWidth;
         const containerHeight = Math.max(gallery.clientHeight, window.innerHeight);
     
-        // Adjust height dynamically based on number of images
         gallery.style.minHeight = `${containerHeight}px`;
     
         const minX = margin;
@@ -50,7 +49,7 @@
             let x, y, isValidPosition = false;
             let attempts = 0;
     
-            while (!isValidPosition && attempts < 1000) {
+            while (!isValidPosition && attempts < 500) { // Limit attempts to prevent infinite loops
                 x = Math.random() * (maxX - minX) + minX;
                 y = Math.random() * (maxY - minY) + minY;
     
@@ -62,6 +61,8 @@
             }
     
             if (isValidPosition) {
+                item.style.width = `${imageSize}px`;
+                item.style.height = `${imageSize}px`;
                 item.style.left = `${x}px`;
                 item.style.top = `${y}px`;
                 item.style.visibility = "visible"; // Ensure visibility after positioning
@@ -69,7 +70,9 @@
         });
     }
     
-    // Run on page load & window resize
+    // Run on load & resize
     window.addEventListener("load", scatterImages);
     window.addEventListener("resize", scatterImages);
+    window.addEventListener("orientationchange", scatterImages); // Ensures proper layout on screen rotation
+
 
