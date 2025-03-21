@@ -436,23 +436,20 @@
 
         /* Contact Section */
         .contact-container {
-            display: flex;
-            justify-content: center;
-            gap: 10px;
-            margin: 1rem auto;
-            width: 100%;
-            flex-wrap: wrap;
-            flex: 1;
+            position: relative;
+            text-align: center;
+            z-index: 2; /* Ensure it stays above images */
+            margin-bottom: 50px; /* Provide space for scattered images */
         }
-
+        
+        
         /* About */
         /* Admin gallery container */
         .admin-gallery {
             position: relative;
             width: 100%;
-            min-height: 100vh; /* Ensures the section is always at least full-screen */
-            overflow: hidden;
-            padding-bottom: 100px; /* Prevents overlap with footer */
+            min-height: auto; /* Allow dynamic height */
+            padding-bottom: 50px; /* Prevent images from touching the footer */
         }
         
         /* Styling for each admin image item */
@@ -468,10 +465,19 @@
             visibility: hidden; /* Initially hidden, made visible after positioning */
         }
 
+        /* Mobile-specific adjustments */
         @media (max-width: 600px) {
             .admin-item {
                 width: 120px;
                 height: 120px;
+            }
+        
+            .admin-gallery {
+                min-height: 150vh; /* Increase height dynamically for mobile */
+            }
+        
+            .footer {
+                margin-top: 100px; /* Push further down to prevent overlapping */
             }
         }
         
@@ -515,7 +521,7 @@
             text-align: center;
             padding: 20px;
             font-size: 1rem;
-            margin-top: auto;
+            margin-top: 50px;
             position: relative;
             width: 100%;
         }
