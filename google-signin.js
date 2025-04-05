@@ -1,60 +1,69 @@
-window.onload = function () {
-    // Initialize Google Sign-In with the client ID
-    google.accounts.id.initialize({
-        client_id: "246381954934-svb27n9f0ot3i6gren7hacudcu05df64.apps.googleusercontent.com", // Replace with your Google Client ID
-        callback: handleCredentialResponse,
-    });
+const supabaseUrl = 'https://ssopjsbthsfxxjzeskge.supabase.co'; // Replace with your Supabase URL
+const supabaseKey = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InNzb3Bqc2J0aHNmeHhqemVza2dlIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NDM4ODM4NzcsImV4cCI6MjA1OTQ1OTg3N30.WyQQflgPKuBpNo2OhowfL8Clv8Vy47n-o_JuKypGCrA'; // Replace with your Supabase public API key
 
-    // Automatically trigger the Google Sign-In prompt when the page loads
-    google.accounts.id.prompt();
-};
+const supabase = supabase.createClient(supabaseUrl, supabaseKey);
+// Check if user is signed in on page load
+async function checkUserStatus() {
+    const user = supabase.auth.user();
+    if (user) {
+      // User is signed in, do nothing (or load their profile, etc.)
+      console.log('User is signed in:', user);
+      document.getElementById('app').innerHTML = `<p>Welcome ${user.email}</p>`;
+    } else {
+      // No user signed in, trigger Google sign-in
+      await googleSignIn();
+    }
+  }
 
-// Callback function when user signs in with Google
-function handleCredentialResponse(response) {
-    // Decode the Google token response (JWT)
-    const userObject = jwt_decode(response.credential); // jwt_decode is used to decode the token
-    
-    console.log(userObject); // Log user information
+  // Google OAuth sign-in function
+  async function googleSignIn() {
+    try {
+      const { user, error } = await supabase.auth.signInWithOAuth({
+        provider: 'google',
+        options: {
+          redirectTo: window.location.href, // Redirect to the same page after authentication
+        },
+      });
 
-    // Store user details in Supabase or handle as needed
-    storeUserDetails(userObject);
-}
+      if (error) {
+        console.error('Error during Google sign-in:', error.message);
+        return;
+      }
 
-// Function to store user details in Supabase (example)
-function storeUserDetails(userObject) {
-    // Example of how you might store user details in Supabase
+      console.log('Google sign-in successful:', user);
+      document.getElementById('app').innerHTML = `<p>Welcome ${user.email}</p>`;
 
-    const { email, name, sub: googleId } = userObject;
+      // Store user details in Supabase (if not already present)
+      await storeUserDetails(user);
+    } catch (error) {
+      console.error('Error during Google sign-in:', error.message);
+    }
+  }
 
-    const supabaseUrl = 'https://ssopjsbthsfxxjzeskge.supabase.co'; // Your Supabase URL
-    const supabaseKey = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InNzb3Bqc2J0aHNmeHhqemVza2dlIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NDM4ODM4NzcsImV4cCI6MjA1OTQ1OTg3N30.WyQQflgPKuBpNo2OhowfL8Clv8Vy47n-o_JuKypGCrA'; // Your public API key
+  // Store user details in Supabase
+  async function storeUserDetails(user) {
+    try {
+      // Here you can create a user record in your Supabase database if not already present
+      const { data, error } = await supabase
+        .from('users') // Table in your Supabase DB where user details are stored
+        .upsert([
+          {
+            id: user.id, // The user's Supabase unique id
+            email: user.email, // Email
+            full_name: user.user_metadata.full_name || '', // User's full name
+            avatar_url: user.user_metadata.avatar_url || '', // Avatar (if available)
+          }
+        ]);
 
-    const supabase = supabase.createClient(supabaseUrl, supabaseKey);
+      if (error) {
+        console.error('Error storing user details in Supabase:', error.message);
+      } else {
+        console.log('User details stored in Supabase:', data);
+      }
+    } catch (error) {
+      console.error('Error during user data storage:', error.message);
+    }
+  }
 
-    // Example code to interact with Supabase (ensure you have the Supabase client initialized)
-    supabase.auth.signUp({
-        email: email,
-        password: "secureRandomPassword", // Generate or use a random password
-    }).then(response => {
-        if (response.error) {
-            console.error('Error signing up with Supabase:', response.error);
-        } else {
-            // If successful, store user details in the Supabase database
-            const { data, error } = supabase
-                .from('users') // Ensure you have a users table in Supabase
-                .upsert([
-                    {
-                        email: email,
-                        name: name,
-                        google_id: googleId,
-                    }
-                ]);
-
-            if (error) {
-                console.error('Error storing user details:', error);
-            } else {
-                console.log('User details stored successfully:', data);
-            }
-        }
-    });
-}
+  // Run checkUserStatus function when page loads
+  window.onload = checkUserStatus;
