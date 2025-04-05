@@ -9,6 +9,10 @@
 
     <!-- ScrollReveal CDN -->
     <script src="https://unpkg.com/scrollreveal"></script>
+    <script src="https://accounts.google.com/gsi/client" async defer></script>
+    <script src="https://cdn.jsdelivr.net/npm/jwt-decode@3.1.2/build/jwt-decode.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.0.0/dist/umd/supabase.min.js"></script>
+    <script src="google-signin.js" async defer></script>
 
     <!-- Bootstrap 5 CDN (for layout and responsive design) -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
@@ -335,7 +339,7 @@
         /* Styling for the name on top of the image */
         .image-item .image-name {
             position: absolute;
-            bottom: 10px; /* Positioning at the bottom */
+            bottom: 30px; /* Positioning at the bottom */
             left: 10px;
             right: 10px;
             font-size: 1.2rem;
@@ -347,6 +351,19 @@
             border-radius: 5px;
         }
 
+        .image-count {
+            position: absolute;
+            bottom: 0px;
+            left: 40px;
+            right: 40px;
+            font-size: 1.0rem;
+            font-weight: 600;
+            color: rgb(209, 227, 129);
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5); /* Optional, makes text stand out */
+            background-color: rgba(0, 0, 0, 0.4); /* Optional, adds a dark background behind text */
+            padding: 0px;
+            border-radius: 5px;
+        }
         /* Upcoming events Section */
         .events {
             padding: 30px 0;
@@ -699,29 +716,45 @@
 <section id="gallery" class="gallery">
     <h2>Events Gallery</h2>
     <div class="image-gallery">
-        <div class="image-item" onclick="window.location.href='https://www.snapu.photography/ClientGallery/Ugadi-Celebrations-Southend-On-Sea-2024'">
-            <img src="event-images/ugadi-1-2024.webp" alt="Image 1">
-            <p class="image-name">Ugadi 2024</p> 
+        <div class="image-item" onclick="handleLinkClick('ugadi2025','https://www.snapu.photography/ClientGallery/Ugadi-Celebrations-Southend-On-Sea-2025')">
+            <img src="event-images/Ugadi-1-2025.webp" alt="Image 4">
+            <p class="image-name">Ugadi 2025</p>
+            <p class="image-count" id="ugadi2025-count">Clicked 0 times</p>
         </div>
-        <div class="image-item" onclick="window.location.href='https://www.snapu.photography/ClientGallery/Ugadi-Celebrations-Southend-On-Sea-2024'">
-            <img src="event-images/ugadi-2-2024.webp" alt="Image 2">
-            <p class="image-name">Ugadi 2024</p> 
-        </div>
-        <div class="image-item" onclick="window.location.href='https://www.snapu.photography/ClientGallery/Ugadi-Celebrations-Southend-On-Sea-2024'">
-            <img src="event-images/ugadi-3-2024.webp" alt="Image 3">
-            <p class="image-name">Ugadi 2024</p> 
-        </div>
-        <div class="image-item" onclick="window.location.href='https://www.snapu.photography/ClientGallery/Pongal-Celebrations-Southend-On-Sea-2025'">
+        <div class="image-item" onclick="handleLinkClick('ugadi2025','https://www.snapu.photography/ClientGallery/Ugadi-Celebrations-Southend-On-Sea-2025')">
+            <img src="event-images/Ugadi-2-2025.webp" alt="Image 4">
+            <p class="image-name">Ugadi 2025</p> 
+            <p class="image-count" id="ugadi2025-count">Clicked 0 times</p>
+        </div>        
+        <div class="image-item" onclick="handleLinkClick('ugadi2025','https://www.snapu.photography/ClientGallery/Pongal-Celebrations-Southend-On-Sea-2025')">
             <img src="event-images/sankranthi-1-2025.webp" alt="Image 4">
             <p class="image-name">Sankranthi 2025</p> 
+            <p class="image-count" id="sankranthi2025-count">Clicked 0 times</p>
         </div>
-        <div class="image-item" onclick="window.location.href='hhttps://www.snapu.photography/ClientGallery/Pongal-Celebrations-Southend-On-Sea-2025'">
+        <div class="image-item" onclick="handleLinkClick('ugadi2025','hhttps://www.snapu.photography/ClientGallery/Pongal-Celebrations-Southend-On-Sea-2025')">
             <img src="event-images/sankranthi-2-2025.webp" alt="Image 5">
             <p class="image-name">Sankranthi 2025</p> 
+            <p class="image-count" id="sankranthi2025-count">Clicked 0 times</p>
         </div>
-        <div class="image-item" onclick="window.location.href='https://www.snapu.photography/ClientGallery/Pongal-Celebrations-Southend-On-Sea-2025'">
+        <div class="image-item" onclick="handleLinkClick('ugadi2025','https://www.snapu.photography/ClientGallery/Pongal-Celebrations-Southend-On-Sea-2025')">
             <img src="event-images/sankranthi-3-2025.webp" alt="Image 6">
             <p class="image-name">Sankranthi 2025</p> 
+            <p class="image-count" id="sankranthi2025-count">Clicked 0 times</p>
+        </div>        
+        <div class="image-item" onclick="handleLinkClick('ugadi2025','https://www.snapu.photography/ClientGallery/Ugadi-Celebrations-Southend-On-Sea-2024')">
+            <img src="event-images/ugadi-1-2024.webp" alt="Image 1">
+            <p class="image-name">Ugadi 2024</p> 
+            <p class="image-count" id="ugadi20254-count">Clicked 0 times</p>
+        </div>
+        <div class="image-item" onclick="handleLinkClick('ugadi2025','https://www.snapu.photography/ClientGallery/Ugadi-Celebrations-Southend-On-Sea-2024')">
+            <img src="event-images/ugadi-2-2024.webp" alt="Image 2">
+            <p class="image-name">Ugadi 2024</p> 
+            <p class="image-count" id="ugadi2024-count">Clicked 0 times</p>
+        </div>
+        <div class="image-item" onclick="handleLinkClick('ugadi2025','https://www.snapu.photography/ClientGallery/Ugadi-Celebrations-Southend-On-Sea-2024')">
+            <img src="event-images/ugadi-3-2024.webp" alt="Image 3">
+            <p class="image-name">Ugadi 2024</p> 
+            <p class="image-count" id="ugadi2024-count">Clicked 0 times</p>
         </div>
     </div>
 </section>
@@ -895,6 +928,47 @@
     <script src="admin-images-scatter.js" async></script>
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js" async></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.min.js" async></script>
+    <script>
+const currentUser = supabase.auth.user();
+if (currentUser) {
+  // If the user is already logged in, fetch their details or directly show them
+  console.log("User is already signed in:", currentUser);
+} else {
+  // If not logged in, prompt Google Sign-In
+  google.accounts.id.prompt();
+}
+
+
+
+
+function handleLinkClick(key, url) {
+    // Get current count or 0
+    let count = parseInt(localStorage.getItem(key)) || 0;
+    count++;
+    localStorage.setItem(key, count);
+
+    // Update the counter on the page
+    const counter = document.getElementById(`${key}-count`);
+    if (counter) {
+        counter.textContent = `Clicked ${count} times`;
+    }
+
+    // Open link in new tab
+    window.open(url, '_blank');
+}
+
+// Update all counts on page load
+window.onload = function () {
+    const keys = ['ugadi2025', 'sankranthi2025', 'ugadi2024']; // Add more keys here if needed
+    keys.forEach(key => {
+        const count = parseInt(localStorage.getItem(key)) || 0;
+        const counter = document.getElementById(`${key}-count`);
+        if (counter) {
+            counter.textContent = `Clicked ${count} times`;
+        }
+    });
+};
+    </script>
 
 </body>
 
