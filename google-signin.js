@@ -1,3 +1,7 @@
+const supabaseUrl = 'https://ssopjsbthsfxxjzeskge.supabase.co'; // Replace with your Supabase URL
+const supabaseKey = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InNzb3Bqc2J0aHNmeHhqemVza2dlIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NDM4ODM4NzcsImV4cCI6MjA1OTQ1OTg3N30.WyQQflgPKuBpNo2OhowfL8Clv8Vy47n-o_JuKypGCrA'; // Replace with your Supabase public API key
+const supabase = supabase.createClient(supabaseUrl, supabaseKey);
+
 // Check if user is signed in on page load
 async function checkUserStatus() {
     const user = supabase.auth.user();
