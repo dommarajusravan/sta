@@ -4,6 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="images/STA-logo.webp" type="image/x-icon">
     <title>STA - SOUTHEND TELUGU ASSOCIATION</title>
 
     <!-- ScrollReveal CDN -->
@@ -22,21 +23,28 @@
             margin: 0;
             padding: 0;
         }
+        html, body {
+            height: 100%;
+            margin: 0;
+        }
 
-        /* Styling for the notification bar */
         .notification-bar {
             background-color: #f74747ae;
             color: white;
             text-align: center;
-            padding-top: 10px;
+            padding: 10px;
             font-size: 18px;
-            position: fixed;
             top: 0;
             left: 0;
             right: 0;
             z-index: 9999;
             width: 100%;
             box-shadow: 0 0px 2px -2px gray;
+            height: 50px; /* Set fixed height */
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: fixed; /* Ensures it scrolls away with the page */
         }
 
         .follow-page {
@@ -84,10 +92,10 @@
             gap: 0px;
         }
 
+        /* Navbar - Fixed at the Top */
         .navbar {
-            padding: 70px 10px 10px 10px;
+            padding: 70px 10px 10px 60px;
         }
-
         /* Navbar Brand Styling */
         .navbar-brand {
             display: flex;
@@ -100,71 +108,127 @@
 
         /* Logo Container */
         .logo-container {
-            margin-right: 20px; /* Space between the logo and text */
-            margin-left: 60px;
+            margin-right: 10px;
         }
-
-        /* Logo */
+        
+        
         .navbar-logo {
-            width: 120px; /* Adjust the size of the logo */
+            width: 120px;
             height: auto;
         }
-
-        /* Text Container */
+        
+        /* Text Styling */
         .text-container {
             display: flex;
             flex-direction: column;
-            align-items: flex-start; /* Align text to the left */
+            align-items: flex-start;
         }
-
-        /* Main Title */
+        
         .main-title {
             font-size: 1.8rem;
             font-weight: bold;
             color: rgb(14, 17, 36);
         }
-
-        /* Sub Title (Telugu) */
+        
         .sub-title {
             font-size: 1.8rem;
-            font-weight: 600;
-            margin-top: 5px; /* Add space between main title and sub title */
+            font-weight: bold;
             padding-left: 40px;
-            color: rgb(199, 59, 59);
+            color: #c73b3b;
+        }
+        
+        /* Navbar Links */
+        .navbar-nav .nav-link {
+            color: white;
+            padding: 10px 12px;
+            font-size: 1rem;
+            font-weight: 600;
+            transition: all 0.3s ease-in-out;
+        }
+        
+        /* Navbar Hover Effect */
+        .navbar-nav .nav-link:hover {
+            background: #991f1f;
+            color: white;
+        }
+
+        /* Mobile Responsive Fixes */
+        @media (max-width: 768px) {
+            .logo-container {
+                margin-right: 0;
+            }
+        
+            .text-container {
+                text-align: center;
+            }
+        
+            .navbar-nav {
+                text-align: center;
+            }
+        
+            .navbar-collapse {
+                background: #0c2643;
+                padding: 10px;
+            }
+        
+            .navbar-toggler {
+                border-color: white;
+            }
+        
+            .navbar-toggler-icon {
+                background-color: white;
+            }
         }
 
         /* Navbar links */
+        .navbar-nav {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 16px; /* Space between links */
+            padding: 12px 20px;
+        }
+
+        /* Navbar Links */
         .navbar-nav .nav-item .nav-link {
-            color: white;
-            padding: 5px 5px;
+            color: #ffffff; /* Dark blue for readability */
+            padding: 10px 16px;
             font-size: 1.1rem;
             font-weight: 600;
-            transition: all 0.3s ease;
+            border-radius: 8px;
+            transition: all 0.3s ease-in-out;
+            position: relative;
+            display: inline-block;
+            background: #0c2643;
         }
 
-        /* Add space between Services and Contact links */
-        .navbar-nav .nav-item:not(:last-child) .nav-link {
-            margin-right: 10px; /* Add margin to create space between links */
-        }
-
-        /* Navbar link hover effect */
-        .navbar-nav .nav-item .nav-link {
-            background-color: #33659a;
-            color: #fefefe;
-            border-radius: 10px;
-        }
-
-        /* Active link color */
-        .navbar-nav .nav-item .nav-link.active {
-            color: #0c2643;
-            font-weight: bold;
-        }
-
-        /* Hover effect for Services and Contact Links */
+        /* Hover Effect */
         .navbar-nav .nav-item .nav-link:hover {
-            background-color: #c54242;
-            color: #fff;
-            border-radius: 5px;
+            background: #991f1f; /* Subtle hover background */
+            color: #ffffff; /* Highlighted blue */
+            transform: translateY(-2px);
+            box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        /* Active Link Styling */
+        .navbar-nav .nav-item .nav-link.active {
+            color: #1258a5; /* Vibrant blue */
+            font-weight: bold;
+            border-bottom: 3px solid #1258a5; /* Underline effect */
+        }
+
+        /* Underline Hover Effect */
+        .navbar-nav .nav-item .nav-link::after {
+            content: "";
+            display: block;
+            width: 0;
+            height: 2px;
+            background: #1258a5;
+            transition: width 0.3s ease-in-out;
+        }
+
+        .navbar-nav .nav-item .nav-link:hover::after {
+            width: 100%;
         }
 
         /* Style for Carousel Section */
@@ -266,6 +330,35 @@
         /* Hover effect on image */
         .image-item:hover {
             transform: scale(1.05);
+        }
+
+        /* Styling for the name on top of the image */
+        .image-item .image-name {
+            position: absolute;
+            bottom: 30px; /* Positioning at the bottom */
+            left: 10px;
+            right: 10px;
+            font-size: 1.2rem;
+            font-weight: 600;
+            color: white;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5); /* Optional, makes text stand out */
+            background-color: rgba(0, 0, 0, 0.4); /* Optional, adds a dark background behind text */
+            padding: 5px;
+            border-radius: 5px;
+        }
+
+        .image-count {
+            position: absolute;
+            bottom: 0px;
+            left: 40px;
+            right: 40px;
+            font-size: 1.0rem;
+            font-weight: 600;
+            color: rgb(209, 227, 129);
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5); /* Optional, makes text stand out */
+            background-color: rgba(0, 0, 0, 0.4); /* Optional, adds a dark background behind text */
+            padding: 0px;
+            border-radius: 5px;
         }
         /* Upcoming events Section */
         .events {
@@ -398,33 +491,51 @@
 
         /* Contact Section */
         .contact-container {
-            display: flex;
-            justify-content: center;
-            gap: 30px;
-            margin: 1rem auto;
-            width: 100%;
-            flex-wrap: wrap;
+            position: relative;
+            text-align: center;
+            z-index: 2; /* Ensure it stays above images */
+            margin-bottom: 50px; /* Provide space for scattered images */
         }
+
 
         /* About */
         /* Admin gallery container */
         .admin-gallery {
             position: relative;
-            height: 100vh;
             width: 100%;
+            min-height: auto; /* Allow dynamic height */
+            padding-bottom: 50px; /* Prevent images from touching the footer */
         }
+
 
         /* Styling for each admin image item */
         .admin-item {
-            width: 150px;
-            height: 150px;
+            width: 180px;
+            height: 180px;
             border-radius: 50%;
             overflow: hidden;
             box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
             transition: transform 0.3s ease-in-out;
             cursor: pointer;
+            position: absolute; /* Important to scatter inside container */
+            visibility: hidden; /* Initially hidden, made visible after positioning */
         }
 
+        /* Mobile-specific adjustments */
+        @media (max-width: 600px) {
+            .admin-item {
+                width: 120px;
+                height: 120px;
+            }
+        
+            .admin-gallery {
+                min-height: 150vh; /* Increase height dynamically for mobile */
+            }
+        
+            .footer {
+                margin-top: 100px; /* Push further down to prevent overlapping */
+            }
+        }
         /* Styling for images */
         .admin-item img {
             width: 100%;
@@ -465,56 +576,59 @@
             text-align: center;
             padding: 20px;
             font-size: 1rem;
+            margin-top: 50px;
+            position: relative;
+            width: 100%;
         }
 </style>
 </head>
 
 <body>
 
+    <div id="app">     
 <div class="notification-bar">
     <div class="follow-page">
-        <a href="https://chat.whatsapp.com/FrbMISYT8Xo8TzIChjL8sk" target="_blank"><img src="whatsapp.png"></a>
-        <a href="https://www.facebook.com/share/1AbmamAaWJ/?mibextid=wwXIfr" target="_blank"><img src="facebook.png"></a>
-        <a href="https://www.instagram.com/southend.telugu.association/" target="_blank"><img src="instagram.png"></a>
-        <a href="mailto:southendteluguassociation@gmail.com"><img src="gmail.png"></a>
-        <a href="https://youtube.com" target="_blank"><img src="youtube.png"></a>
+        <a href="https://chat.whatsapp.com/FrbMISYT8Xo8TzIChjL8sk" target="_blank"><img src="followus-images/whatsapp.webp"></a>
+        <a href="https://www.facebook.com/share/1AbmamAaWJ/?mibextid=wwXIfr" target="_blank"><img src="followus-images/facebook.webp"></a>
+        <a href="https://www.instagram.com/southend.telugu.association/" target="_blank"><img src="followus-images/instagram.webp"></a>
+        <a href="mailto:southendteluguassociation@gmail.com"><img src="followus-images/gmail.webp"></a>
+        <a href="https://youtube.com" target="_blank"><img src="followus-images/youtube.webp"></a>
         <a href="tel:+44 7776677286">📞</a>
     </div>
-    <p>Register for our upcoming Ugadi event - 30th Mrach 2025</p>
+    <p>Register for our upcoming Diwali event - 25th October 2025</p>
 </div>    
 <!-- Navbar -->
 <section id="navbar-section" class="navbar-frame">
     <nav class="navbar navbar-expand-lg navbar-light">
-            <div class="logo-container">
-                <img src="STA-logo.png" alt="Logo" class="navbar-logo">
-            </div>
-            <div class="text-container">
-                <div class="main-title">
-                    SOUTHEND TELUGU ASSOCIATION
+        <div class="container-fluid">
+            <!-- Logo and Title -->
+            <div class="d-flex align-items-center">
+                <div class="logo-container">
+                    <img src="images/STA-logo.webp" alt="Logo" class="navbar-logo">
                 </div>
-                <div class="sub-title">
-                    సౌతెండ్ తెలుగు అసోసియేషన్
+                <div class="text-container">
+                    <div class="main-title">SOUTHEND TELUGU ASSOCIATION</div>
+                    <div class="sub-title">సౌతెండ్ తెలుగు అసోసియేషన్</div>
                 </div>
             </div>
-            <div class="collapse navbar-collapse" id="navbarNav">
-                <ul class="navbar-nav ms-auto">
-                    <li class="nav-item">
-                        <a class="nav-link" href="#calendar">Calendar</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#gallery">Gallery</a>
-                    </li> 
-                    <li class="nav-item">
-                        <a class="nav-link" href="#services">Services</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#about">About</a>
-                    </li>
+
+            <!-- Mobile Navbar Toggle Button -->
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <!-- Navbar Links -->
+            <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
+                <ul class="navbar-nav">
+                    <li class="nav-item"><a class="nav-link" href="#calendar">Calendar</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#gallery">Gallery</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#services">Services</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#about">About</a></li>
                 </ul>
             </div>
+        </div>
     </nav>
 </section>
-
 
 
 <!-- Carousel Section with Rounded Corners -->
@@ -523,7 +637,7 @@
       <div class="carousel-inner">
         <!-- First slide -->
         <div class="carousel-item active">
-          <img src="img1.jpg" class="d-block w-100" alt="Image 1">
+          <img src="images/img1.webp" class="d-block w-100" alt="Image 1">
           <div class="carousel-caption d-none d-md-block">
             <div class="caption-holder">
             <h5>Welcome to Southend Telugu Association</h5>
@@ -533,7 +647,7 @@
         </div>
         <!-- Second slide -->
         <div class="carousel-item">
-          <img src="img2.jpg" class="d-block w-100" alt="Image 2">
+          <img src="images/img2.webp" class="d-block w-100" alt="Image 2">
           <div class="carousel-caption d-none d-md-block">
             <div class="caption-holder">
             <h5>Community Events & Services</h5>
@@ -543,7 +657,7 @@
         </div>
         <!-- Third slide -->
         <div class="carousel-item">
-          <img src="img3.jpg" class="d-block w-100" alt="Image 3">
+          <img src="images/img3.webp" class="d-block w-100" alt="Image 3">
           <div class="carousel-caption d-none d-md-block">
             <div class="caption-holder">
             <h5>Join Us Today!</h5>
@@ -569,21 +683,21 @@
     <h2>Upcoming Events</h2>
     <div class="calendar">
         <div class="event">
-            <img src="calendar.png" alt="Event 1">
+            <img src="images/calendar.webp" alt="Event 2">
             <div class="event-details">
-                <div class="event-title">Ugadi Festival</div>
-                <div class="event-date">March 30, 2025</div>
+                <div class="event-title">Summer Party</div>
+                <div class="event-date">June 29, 2025</div>
             </div>
-        </div>
+        </div>        
         <div class="event">
-            <img src="calendar.png" alt="Event 2">
+            <img src="images/calendar.webp" alt="Event 2">
             <div class="event-details">
                 <div class="event-title">Diwali</div>
-                <div class="event-date">October 26, 2025</div>
+                <div class="event-date">October 25, 2025</div>
             </div>
         </div>
         <div class="event">
-            <img src="calendar.png" alt="Event 2">
+            <img src="images/calendar.webp" alt="Event 2">
             <div class="event-details">
                 <div class="event-title">Sankranthi</div>
                 <div class="event-date">January 18, 2026</div>
@@ -597,23 +711,45 @@
 <section id="gallery" class="gallery">
     <h2>Events Gallery</h2>
     <div class="image-gallery">
-        <div class="image-item" onclick="window.location.href='https://example.com/page1'">
-            <img src="event1.jpg" alt="Image 1">
+        <div class="image-item" onclick="handleLinkClick('ugadi2025','https://www.snapu.photography/ClientGallery/Ugadi-Celebrations-Southend-On-Sea-2025')">
+            <img src="event-images/ugadi-1-2025.webp" alt="Image 4">
+            <p class="image-name">Ugadi 2025</p>
+            <!--<p class="image-count" id="ugadi2025-count">Clicked 0 times</p>-->
         </div>
-        <div class="image-item" onclick="window.location.href='https://example.com/page2'">
-            <img src="event2.jpg" alt="Image 2">
+        <div class="image-item" onclick="handleLinkClick('ugadi2025','https://www.snapu.photography/ClientGallery/Ugadi-Celebrations-Southend-On-Sea-2025')">
+            <img src="event-images/ugadi-2-2025.webp" alt="Image 4">
+            <p class="image-name">Ugadi 2025</p> 
+            <!--<p class="image-count" id="ugadi2025-count">Clicked 0 times</p>-->
+        </div>        
+        <div class="image-item" onclick="handleLinkClick('ugadi2025','https://www.snapu.photography/ClientGallery/Pongal-Celebrations-Southend-On-Sea-2025')">
+            <img src="event-images/sankranthi-1-2025.webp" alt="Image 4">
+            <p class="image-name">Sankranthi 2025</p> 
+            <!--<p class="image-count" id="sankranthi2025-count">Clicked 0 times</p>-->
         </div>
-        <div class="image-item" onclick="window.location.href='https://example.com/page3'">
-            <img src="event3.jpg" alt="Image 3">
+        <div class="image-item" onclick="handleLinkClick('ugadi2025','hhttps://www.snapu.photography/ClientGallery/Pongal-Celebrations-Southend-On-Sea-2025')">
+            <img src="event-images/sankranthi-2-2025.webp" alt="Image 5">
+            <p class="image-name">Sankranthi 2025</p> 
+            <!--<p class="image-count" id="sankranthi2025-count">Clicked 0 times</p>-->
         </div>
-        <div class="image-item" onclick="window.location.href='https://example.com/page4'">
-            <img src="event4.jpg" alt="Image 4">
+        <div class="image-item" onclick="handleLinkClick('ugadi2025','https://www.snapu.photography/ClientGallery/Pongal-Celebrations-Southend-On-Sea-2025')">
+            <img src="event-images/sankranthi-3-2025.webp" alt="Image 6">
+            <p class="image-name">Sankranthi 2025</p> 
+            <!--<p class="image-count" id="sankranthi2025-count">Clicked 0 times</p>-->
+        </div>        
+        <div class="image-item" onclick="handleLinkClick('ugadi2025','https://www.snapu.photography/ClientGallery/Ugadi-Celebrations-Southend-On-Sea-2024')">
+            <img src="event-images/ugadi-1-2024.webp" alt="Image 1">
+            <p class="image-name">Ugadi 2024</p> 
+            <!--<p class="image-count" id="ugadi20254-count">Clicked 0 times</p>-->
         </div>
-        <div class="image-item" onclick="window.location.href='https://example.com/page5'">
-            <img src="event5.jpg" alt="Image 5">
+        <div class="image-item" onclick="handleLinkClick('ugadi2025','https://www.snapu.photography/ClientGallery/Ugadi-Celebrations-Southend-On-Sea-2024')">
+            <img src="event-images/ugadi-2-2024.webp" alt="Image 2">
+            <p class="image-name">Ugadi 2024</p> 
+            <!--<p class="image-count" id="ugadi2024-count">Clicked 0 times</p>-->
         </div>
-        <div class="image-item" onclick="window.location.href='https://example.com/page6'">
-            <img src="event6.jpg" alt="Image 6">
+        <div class="image-item" onclick="handleLinkClick('ugadi2025','https://www.snapu.photography/ClientGallery/Ugadi-Celebrations-Southend-On-Sea-2024')">
+            <img src="event-images/ugadi-3-2024.webp" alt="Image 3">
+            <p class="image-name">Ugadi 2024</p> 
+            <!--<p class="image-count" id="ugadi2024-count">Clicked 0 times</p>-->
         </div>
     </div>
 </section>
@@ -622,7 +758,7 @@
         <h2>Services</h2>
         <div class="row justify-content-center">
             <div class="col-md-4 service" data-aos="fade-up">
-                <img src="STA-logo.png" alt="STA Events">
+                <img src="images/STA-logo.webp" alt="STA Events">
                 <h4>Cultural Events</h4>
                 <p>Southend Telugu Association organizes various cultural and social events throughout the year.</p>
                 <ul>
@@ -634,7 +770,7 @@
                 </ul>
             </div>
             <div class="col-md-4 service" data-aos="fade-up" data-aos-delay="200">
-                <img src="STA-logo.png" alt="Community Services">
+                <img src="images/STA-logo.webp" alt="Community Services">
                 <h4>Community Services</h4>
                 <p></p>
                 <ul>
@@ -642,11 +778,11 @@
                     <li>Health & Fitness Programs (Yoga, Dance, Walking Clubs)</li>
                     <li>Badminton & Cricket Tournaments</li>
                     <li>Special programs for children</li>
-                    <li>Telugu Language Classes for Kids & Adults</li>li>
+                    <li>Telugu Language Classes for Kids & Adults</li>
                 </ul>
             </div>
             <div class="col-md-4 service" data-aos="fade-up" data-aos-delay="400">
-                <img src="STA-logo.png" alt="Social Services">
+                <img src="images/STA-logo.webp" alt="Social Services">
                 <h4>Social Services</h4>
                 <p></p>
                 <ul>
@@ -666,53 +802,113 @@
             <h3>About</h3>
             <div class="admin-gallery" id="adminGallery">
                 <div class="admin-item" id="admin1">
-                    <img src="sravan.jpg" alt="Admin 1">
+                    <img src="admin-images/phani.webp" alt="Admin 1">
                     <div class="details">
-                        <p>Admin 1: Chief Executive</p>
+                        <p>Phani Varma</p>
                     </div>
                 </div>
                 <div class="admin-item" id="admin2">
-                    <img src="phani.jpg" alt="Admin 2">
+                    <img src="admin-images/sravan.webp" alt="Admin 2">
                     <div class="details">
-                        <p>Admin 2: Marketing Director</p>
+                        <p>Sravan Dommaraju</p>
                     </div>
                 </div>
                 <div class="admin-item" id="admin3">
-                    <img src="admin3.jpg" alt="Admin 3">
+                    <img src="admin-images/balaji.webp" alt="Admin 3">
                     <div class="details">
-                        <p>Admin 3: Operations Manager</p>
+                        <p>Balaji</p>
                     </div>
                 </div>
                 <div class="admin-item" id="admin4">
-                    <img src="admin4.jpg" alt="Admin 4">
+                    <img src="admin-images/sreeram.webp" alt="Admin 4">
                     <div class="details">
-                        <p>Admin 4: Technical Lead</p>
+                        <p>Sreeram</p>
                     </div>
                 </div>
                 <div class="admin-item" id="admin1">
-                    <img src="admin1.jpg" alt="Admin 1">
+                    <img src="admin-images/srihari.webp" alt="Admin 1">
                     <div class="details">
-                        <p>Admin 1: Chief Executive</p>
+                        <p>Srihari</p>
                     </div>
                 </div>
                 <div class="admin-item" id="admin2">
-                    <img src="admin2.jpg" alt="Admin 2">
+                    <img src="admin-images/srikanth.webp" alt="Admin 2">
                     <div class="details">
-                        <p>Admin 2: Marketing Director</p>
+                        <p>Dr Srikanth</p>
                     </div>
                 </div>
                 <div class="admin-item" id="admin3">
-                    <img src="admin3.jpg" alt="Admin 3">
+                    <img src="admin-images/sunil.webp" alt="Admin 3">
                     <div class="details">
-                        <p>Admin 3: Operations Manager</p>
+                        <p>Sunil</p>
                     </div>
                 </div>
                 <div class="admin-item" id="admin4">
-                    <img src="admin4.jpg" alt="Admin 4">
+                    <img src="admin-images/madhav.webp" alt="Admin 4">
                     <div class="details">
-                        <p>Admin 4: Technical Lead</p>
+                        <p>Madhava Rao</p>
                     </div>
-                </div>                
+                </div>              
+                <div class="admin-item" id="admin4">
+                    <img src="admin-images/rupesh.webp" alt="Admin 4">
+                    <div class="details">
+                        <p>Rupesh</p>
+                    </div>
+                </div> 
+                <div class="admin-item" id="admin4">
+                    <img src="admin-images/nandu.webp" alt="Admin 4">
+                    <div class="details">
+                        <p>Nandu</p>
+                    </div>
+                </div>    
+                <div class="admin-item" id="admin4">
+                    <img src="admin-images/naidu.webp" alt="Admin 4">
+                    <div class="details">
+                        <p>CR Naidu</p>
+                    </div>
+                </div>    
+                <div class="admin-item" id="admin4">
+                    <img src="admin-images/bramha.webp" alt="Admin 4">
+                    <div class="details">
+                        <p>Bramha</p>
+                    </div>
+                </div>    
+                <div class="admin-item" id="admin4">
+                    <img src="admin-images/shyam.webp" alt="Admin 4">
+                    <div class="details">
+                        <p>Jampana Shyam Sundara Rama Raju</p>
+                    </div>
+                </div>    
+                <div class="admin-item" id="admin4">
+                    <img src="admin-images/jagadesh.webp" alt="Admin 4">
+                    <div class="details">
+                        <p>Jagadeesh</p>
+                    </div>
+                </div>    
+                <div class="admin-item" id="admin4">
+                    <img src="admin-images/naveen.webp" alt="Admin 4">
+                    <div class="details">
+                        <p>Naveen</p>
+                    </div>
+                </div>    
+                <div class="admin-item" id="admin4">
+                    <img src="admin-images/sirish.webp" alt="Admin 4">
+                    <div class="details">
+                        <p>Sirish</p>
+                    </div>
+                </div>    
+                <div class="admin-item" id="admin4">
+                    <img src="admin-images/karna.webp" alt="Admin 4">
+                    <div class="details">
+                        <p>Karunakar Reddy</p>
+                    </div>
+                </div>    
+                <div class="admin-item" id="admin4">
+                    <img src="admin-images/karthik.webp" alt="Karthik">
+                    <div class="details">
+                        <p>Karthik</p>
+                    </div>
+                </div>
             </div>
 
     </div>   
@@ -722,82 +918,11 @@
     <footer class="footer">
         <p>&copy; 2025 Southend Telugu Association | All Rights Reserved</p>
     </footer>
-
-    <!-- ScrollReveal Animation -->
-    <script>
-        // Initialize ScrollReveal
-        ScrollReveal().reveal('.service', {
-            duration: 1000,
-            distance: '50px',
-            origin: 'bottom',
-            delay: 200,
-            opacity: 0,
-            easing: 'ease-in-out'
-        });
-
-        ScrollReveal().reveal('.form', {
-            duration: 1000,
-            distance: '50px',
-            origin: 'bottom',
-            delay: 400,
-            opacity: 0,
-            easing: 'ease-in-out'
-        });
-
-        // Function to randomly scatter the images without overlap
-        function scatterImages() {
-            const gallery = document.getElementById('adminGallery');
-            const items = gallery.querySelectorAll('.admin-item');
-            const imageSize = 150; // Size of each image (square)
-            const margin = 20; // Margin between images to avoid overlap
-            const positions = []; // To keep track of used positions
-
-            // Function to check if the new position overlaps with any existing image
-            function checkOverlap(x, y) {
-                for (let i = 0; i < positions.length; i++) {
-                    const pos = positions[i];
-                    const dx = x - pos.x;
-                    const dy = y - pos.y;
-                    const distance = Math.sqrt(dx * dx + dy * dy);
-                    if (distance < imageSize + margin) { // Checking if distance is less than the size of the image plus margin
-                        return true;
-                    }
-                }
-                return false;
-            }
-
-            // Loop to randomly place each image
-            items.forEach(item => {
-                let x, y;
-                let isValidPosition = false;
-
-                while (!isValidPosition) {
-                    // Randomly position each image
-                    x = Math.floor(Math.random() * (window.innerWidth - imageSize)); // Random horizontal position
-                    y = Math.floor(Math.random() * (window.innerHeight - imageSize)); // Random vertical position
-
-                    // Check if the position overlaps with any existing image
-                    if (!checkOverlap(x, y)) {
-                        isValidPosition = true;
-                        positions.push({x, y});
-                    }
-                }
-
-                // Apply the position to the image item
-                item.style.position = 'absolute';
-                item.style.left = `${x}px`;
-                item.style.top = `${y}px`;
-            });
-        }
-
-        // Call scatterImages on page load
-        window.onload = scatterImages;
-    </script>
-
+      </div>
     <!-- Bootstrap JS for Navbar -->
-    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.min.js"></script>
-
+    <script src="admin-images-scatter.js" async></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js" async></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.min.js" async></script>
 </body>
 
 </html>
