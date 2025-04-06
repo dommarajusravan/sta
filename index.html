@@ -16,7 +16,7 @@
       const { email, user_metadata } = user;
       const name = user_metadata.full_name;
 
-      const { error } = await supabase.from('user_signin').upsert([
+      const { error } = await supabase.from('user_logins').upsert([
         {
           id: user.id,
           email: email,
