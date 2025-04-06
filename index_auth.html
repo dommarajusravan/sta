@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Google Login with Supabase</title>
+  <script type="module">
+    import { createClient } from 'https://cdn.jsdelivr.net/npm/@supabase/supabase-js/+esm';
+
+    // ✅ Replace with your actual Supabase details
+    const supabaseUrl = 'https://ssopjsbthsfxxjzeskge.supabase.co';
+    const supabaseKey = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InNzb3Bqc2J0aHNmeHhqemVza2dlIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NDM4ODM4NzcsImV4cCI6MjA1OTQ1OTg3N30.WyQQflgPKuBpNo2OhowfL8Clv8Vy47n-o_JuKypGCrA';
+    const supabase = createClient(supabaseUrl, supabaseKey);
+
+    // ✅ Store user info in Supabase table
+    async function storeUser(user) {
+      const { email, user_metadata } = user;
+      const name = user_metadata.full_name;
+
+      const { error } = await supabase.from('user_logins').upsert([
+        {
+          id: user.id,
+          email: email,
+          name: name
+        }
+      ]);
+
+      if (error) {
+        console.error("Error storing user:", error);
+      } else {
+        console.log("User stored successfully");
+      }
+    }
+
+    // ✅ Authenticate on page load
+    document.addEventListener('DOMContentLoaded', async () => {
+      const { data: { user } } = await supabase.auth.getUser();
+
+      if (!user) {
+        await supabase.auth.signInWithOAuth({
+          provider: 'google',
+          options: {
+            redirectTo: 'https://www.southendteluguassociation.org', // change this!
+          },
+        });
+      } else {
+        console.log("User logged in:", user.email);
+        await storeUser(user);
+        document.body.innerHTML += `<h2>Welcome, ${user.user_metadata.full_name}</h2>`;
+      }
+    });
+  </script>
+</head>
+<body>
+  <h1>My Protected Web App</h1>
+</body>
+</html>
