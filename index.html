@@ -40,8 +40,8 @@
         }
 
         .notification-bar {
-            background-color: #f74747ae;
-            color: white;
+            background-color: #f5d555ae;
+            color: rgb(94, 89, 89);
             text-align: center;
             padding: 10px;
             font-size: 18px;
@@ -137,15 +137,25 @@
         }
         
         .main-title {
-            font-size: 1.8rem;
+            font-size: 1.7rem;
             font-weight: bold;
             color: rgb(14, 17, 36);
         }
         
         .sub-title {
-            font-size: 1.8rem;
+            font-size: 1.7rem;
             font-weight: bold;
             color: #c73b3b;
+        }
+
+        @media (max-width: 600px) {
+            .main-title {
+                font-size: 1.5rem; /* slightly smaller for mobile */
+            }
+            
+            .sub-title {
+                font-size: 1.5rem;
+            }
         }
         
         /* Navbar Links */
@@ -674,8 +684,8 @@
 <body>
 
     <div id="app">     
-<div class="notification-bar">
-    <p>Register for our upcoming Diwali event - 25th October 2025</p>
+<div class="notification-bar" onclick="window.open('https://www.score7.io/tournaments/ggvkc5nunz/stages/13363577', '_blank')">
+    <p>Click here to access STA Women's and Kid's badminton Tournament details - 31st May 2025</p>
 </div>    
 <!-- Navbar -->
 <section id="navbar-section" class="navbar-frame">
@@ -802,6 +812,13 @@
         <div class="event">
             <img src="images/calendar.webp" alt="Event 2">
             <div class="event-details">
+                <div class="event-title">Women's and Kid's Badminton 2025</div>
+                <div class="event-date">May 31, 2025</div>
+            </div>
+        </div>      
+        <div class="event">
+            <img src="images/calendar.webp" alt="Event 2">
+            <div class="event-details">
                 <div class="event-title">Summer Party</div>
                 <div class="event-date">June 29, 2025</div>
             </div>
@@ -829,15 +846,12 @@
     <h2>Events Posters</h2>
     <div id="events-posters" class="carousel slide" data-bs-ride="carousel">
       <div class="carousel-inner">
-        <!-- First slide -->
         <div class="carousel-item custom-slide active">
-          <img src="event-posters/sta-wb-2025.png" class="d-block w-100" alt="Image 1">
+          <img src="event-posters/sta-summer-event-2025.png" class="d-block w-100" alt="Image 2">
         </div>
-        <!-- Second slide -->
         <div class="carousel-item custom-slide">
-          <img src="event-posters/calendar-of-events-2025.png" class="d-block w-100" alt="Image 2">
+            <img src="event-posters/sta-wb-2025.png" class="d-block w-100" alt="Image 1">
         </div>
-        <!-- Third slide -->
         <div class="carousel-item custom-slide">
           <img src="event-posters/yoga-2025.jpeg" class="d-block w-100" alt="Image 3">
         </div>
