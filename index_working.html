@@ -4,17 +4,6 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Official website of the Southend Telugu Association (STA) in the UK. Find events, cultural activities, and community services." />
-    <meta name="keywords" content="Southend Telugu Association, STA UK, Telugu events UK, Telugu community Southend, Indian Association UK" />
-    <meta name="author" content="Southend Telugu Association" />
-    
-    <!-- Open Graph for social sharing -->
-    <meta property="og:title" content="Southend Telugu Association | STA UK" />
-    <meta property="og:description" content="Bringing the Telugu community together in Southend and beyond." />
-    <meta property="og:url" content="https://www.southendteluguassociation.org" />
-    <meta property="og:type" content="website" />
-    
-
     <link rel="icon" href="images/STA-logo.webp" type="image/x-icon">
     <title>STA - SOUTHEND TELUGU ASSOCIATION</title>
 
@@ -40,8 +29,8 @@
         }
 
         .notification-bar {
-            background-color: #f5d555ae;
-            color: rgb(94, 89, 89);
+            background-color: #f74747ae;
+            color: white;
             text-align: center;
             padding: 10px;
             font-size: 18px;
@@ -126,7 +115,6 @@
         .navbar-logo {
             width: 120px;
             height: auto;
-            padding-right: 10px;
         }
         
         /* Text Styling */
@@ -137,30 +125,22 @@
         }
         
         .main-title {
-            font-size: 1.7rem;
+            font-size: 1.8rem;
             font-weight: bold;
             color: rgb(14, 17, 36);
         }
         
         .sub-title {
-            font-size: 1.7rem;
+            font-size: 1.8rem;
             font-weight: bold;
+            padding-left: 40px;
             color: #c73b3b;
-        }
-
-        @media (max-width: 600px) {
-            .main-title {
-                font-size: 1.5rem; /* slightly smaller for mobile */
-            }
-            
-            .sub-title {
-                font-size: 1.5rem;
-            }
         }
         
         /* Navbar Links */
         .navbar-nav .nav-link {
             color: white;
+            padding: 10px 12px;
             font-size: 1rem;
             font-weight: 600;
             transition: all 0.3s ease-in-out;
@@ -205,8 +185,8 @@
             display: flex;
             justify-content: center;
             align-items: center;
-            gap: 8px; /* Space between links */
-            padding: 1px 10px;
+            gap: 16px; /* Space between links */
+            padding: 12px 20px;
         }
 
         /* Navbar Links */
@@ -252,21 +232,39 @@
         }
 
         /* Style for Carousel Section */
+        /* Style for the caption holder */
+        .caption-holder {
+        position:relative;
+        bottom: 20px;  /* Position the text at the bottom */
+        left: 20px;    /* Keep some space on the left */
+        background-color: rgba(0, 0, 0, 0.343);  /* Semi-transparent black background */
+        padding: 20px;
+        border-radius: 10px;  /* Optional rounded corners for the text box */
+        }
+
         /* Styling for Carousel Caption Text */
+        .caption-holder h5 {
+        font-size: 3rem;
+        font-weight: bold;
+        color: white;
+        }
+
+        .caption-holder p {
+        font-size: 1.25rem;
+        color: white;
+        }
+
         .carousel-section {
-        margin: 60px;
-        border-radius: 60px;  /* Rounded corners for the frame */
+        margin: 20px;
+        border-radius: 20px;  /* Rounded corners for the frame */
         overflow: hidden;     /* Hide overflowing parts of images */
         box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);  /* Add shadow for a nice frame effect */
-        padding: 30px 0;
-        text-align: center;
         }
 
         /* Ensure the images fit the container */
         .carousel-item img {
-            object-fit:contain; /* or 'cover', 'fill', depending on your needs */
-            max-height: 800px;
-            height: auto;
+        object-fit: cover;  /* Ensure images cover the area without distortion */
+        height: 800px;  /* Adjust height based on your preference */
         }
 
         /* Styling for Carousel Caption */
@@ -285,45 +283,10 @@
         color: white;
         }
 
-        /* Style for the caption holder */
-        .caption-holder {
-        position:relative;
-        bottom: 20px;  /* Position the text at the bottom */
-        background-color: rgba(210, 10, 10, 0.343);  /* Semi-transparent black background */
-        border-radius: 10px;  /* Optional rounded corners for the text box */
-        padding: 8px 16px; /* Reduce horizontal padding */
-        display: inline-block; /* Shrinks to fit content */
-        max-width: 90%; /* Optional: prevent overflow on small screens */        }
-
-
         /* Customize carousel controls */
         .carousel-control-prev-icon,
         .carousel-control-next-icon {
         background-color: #000000;  /* Dark color for the control icons */
-        }
-
-        /* sponsors Section */
-        .sponsors {
-            padding: 30px 0;
-            text-align: center;
-            background-color: white;
-        }
-        .sponsors-image-item {
-            position: relative;
-            flex: 0 0 auto; /* Prevents items from shrinking or growing */
-            width: 250px;
-            height: 250px;
-            overflow: hidden;
-            border-radius: 10px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-            cursor: pointer;
-            transition: transform 0.3s ease-in-out;
-        }
-        .sponsors-image-item img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            border-radius: 10px;
         }
 
         /* Gallery Section */
@@ -397,7 +360,6 @@
             padding: 0px;
             border-radius: 5px;
         }
-
         /* Upcoming events Section */
         .events {
             padding: 30px 0;
@@ -439,22 +401,6 @@
         .event-date {
             color: #666;
         }
-
-        /* Events Posters */
-        .events-posters-section {
-            margin: 60px;
-            border-radius: 60px;  /* Rounded corners for the frame */
-            overflow: hidden;     /* Hide overflowing parts of images */
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);  /* Add shadow for a nice frame effect */
-            padding: 30px 0;
-            text-align: center;
-        }
-        .custom-slide img {
-            object-fit: contain; /* or 'cover', 'fill', depending on your needs */
-            max-height: 800px;
-            height: auto;
-        }
-
 
         /* Services Section */
         .community-events {
@@ -622,70 +568,34 @@
             display: block;
         }
 
+            
         /* Footer */
         .footer {
             background-color: rgb(11, 26, 43);
             color: white;
             text-align: center;
-            padding: 20px 10px;
+            padding: 20px;
             font-size: 1rem;
-            width: 100%;
+            margin-top: 50px;
             position: relative;
-            bottom: 0;
-            left: 0;
-            z-index: 999;
-            }
-
-            .footer-content {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            gap: 10px;
-            }        
-
-            .follow-us {
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            }
-
-            .social-icons {
-            display: flex;
-            gap: 30px;
-            }
-
-            .social-icons img {
-            width: 35px;
-            height: 35px;
-            border-radius: 10px;
-            }
-
-            .social-icons img:hover {
-            transform: scale(1.2);
-            }
-
-            /* Mobile responsive footer */
-            @media (max-width: 480px) {
-            .footer-content {
-                gap: 14px;
-            }
-
-            .follow-us {
-                flex-direction: column;
-            }
-
-            .social-icons {
-                gap: 16px;
-            }
-            }
+            width: 100%;
+        }
 </style>
 </head>
 
 <body>
 
     <div id="app">     
-<div class="notification-bar" onclick="window.open('https://www.score7.io/tournaments/ggvkc5nunz/stages/13363577', '_blank')">
-    <p>Click here to access STA Women's and Kid's badminton Tournament details - 31st May 2025</p>
+<div class="notification-bar">
+    <div class="follow-page">
+        <a href="https://chat.whatsapp.com/FrbMISYT8Xo8TzIChjL8sk" target="_blank"><img src="followus-images/whatsapp.webp"></a>
+        <a href="https://www.facebook.com/share/1AbmamAaWJ/?mibextid=wwXIfr" target="_blank"><img src="followus-images/facebook.webp"></a>
+        <a href="https://www.instagram.com/southend.telugu.association/" target="_blank"><img src="followus-images/instagram.webp"></a>
+        <a href="mailto:southendteluguassociation@gmail.com"><img src="followus-images/gmail.webp"></a>
+        <a href="https://youtube.com" target="_blank"><img src="followus-images/youtube.webp"></a>
+        <a href="tel:+44 7776677286">📞</a>
+    </div>
+    <p>Register for our upcoming Diwali event - 25th October 2025</p>
 </div>    
 <!-- Navbar -->
 <section id="navbar-section" class="navbar-frame">
@@ -711,10 +621,8 @@
             <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
                 <ul class="navbar-nav">
                     <li class="nav-item"><a class="nav-link" href="#calendar">Calendar</a></li>
-                    <li class="nav-item"><a class="nav-link" href="#events-posters">Posters</a></li>
                     <li class="nav-item"><a class="nav-link" href="#gallery">Gallery</a></li>
                     <li class="nav-item"><a class="nav-link" href="#services">Services</a></li>
-                    <li class="nav-item"><a class="nav-link" href="#sponsors">Sponsors</a></li>
                     <li class="nav-item"><a class="nav-link" href="#about">About</a></li>
                 </ul>
             </div>
@@ -727,9 +635,19 @@
 <section class="carousel-section">
     <div id="carouselExample" class="carousel slide" data-bs-ride="carousel">
       <div class="carousel-inner">
-        <!-- Second slide -->
+        <!-- First slide -->
         <div class="carousel-item active">
-          <img src="images/img2.jpg" class="d-block w-100" alt="Image 2">
+          <img src="images/img1.webp" class="d-block w-100" alt="Image 1">
+          <div class="carousel-caption d-none d-md-block">
+            <div class="caption-holder">
+            <h5>Welcome to Southend Telugu Association</h5>
+            <p>Connecting Telugu-speaking people in Southend</p>
+            </div>
+          </div>
+        </div>
+        <!-- Second slide -->
+        <div class="carousel-item">
+          <img src="images/img2.webp" class="d-block w-100" alt="Image 2">
           <div class="carousel-caption d-none d-md-block">
             <div class="caption-holder">
             <h5>Community Events & Services</h5>
@@ -739,7 +657,7 @@
         </div>
         <!-- Third slide -->
         <div class="carousel-item">
-          <img src="images/img3.jpg" class="d-block w-100" alt="Image 3">
+          <img src="images/img3.webp" class="d-block w-100" alt="Image 3">
           <div class="carousel-caption d-none d-md-block">
             <div class="caption-holder">
             <h5>Join Us Today!</h5>
@@ -747,51 +665,6 @@
            </div>
           </div>
         </div>
-        <div class="carousel-item">
-            <img src="images/img4.jpg" class="d-block w-100" alt="Image 3">
-            <div class="carousel-caption d-none d-md-block">
-              <div class="caption-holder">
-                <h5>Welcome to Southend Telugu Association</h5>
-                <p>Connecting Telugu-speaking people in Southend</p>
-             </div>
-            </div>
-        </div>
-        <div class="carousel-item">
-            <img src="images/img9.jpg" class="d-block w-100" alt="Image 3">
-            <div class="carousel-caption d-none d-md-block">
-              <div class="caption-holder">
-                <h5>Community Events & Services</h5>
-                <p>Participate in our events and services</p>
-             </div>
-            </div>
-        </div>
-        <div class="carousel-item">
-            <img src="images/img6.jpg" class="d-block w-100" alt="Image 3">
-            <div class="carousel-caption d-none d-md-block">
-              <div class="caption-holder">
-              <h5>Join Us Today!</h5>
-              <p>Become a part of our vibrant community</p>
-             </div>
-            </div>
-        </div>
-        <div class="carousel-item">
-            <img src="images/img7.jpg" class="d-block w-100" alt="Image 3">
-            <div class="carousel-caption d-none d-md-block">
-              <div class="caption-holder">
-                <h5>Welcome to Southend Telugu Association</h5>
-                <p>Connecting Telugu-speaking people in Southend</p>
-             </div>
-            </div>
-        </div>
-        <div class="carousel-item">
-            <img src="images/img8.jpg" class="d-block w-100" alt="Image 3">
-            <div class="carousel-caption d-none d-md-block">
-              <div class="caption-holder">
-              <h5>Join Us Today!</h5>
-              <p>Become a part of our vibrant community</p>
-             </div>
-            </div>
-        </div>    
       </div>
       <!-- Carousel Controls -->
       <button class="carousel-control-prev" type="button" data-bs-target="#carouselExample" data-bs-slide="prev">
@@ -809,13 +682,6 @@
   <section class="events" id="calendar">
     <h2>Upcoming Events</h2>
     <div class="calendar">
-        <div class="event">
-            <img src="images/calendar.webp" alt="Event 2">
-            <div class="event-details">
-                <div class="event-title">Women's and Kid's Badminton 2025</div>
-                <div class="event-date">May 31, 2025</div>
-            </div>
-        </div>      
         <div class="event">
             <img src="images/calendar.webp" alt="Event 2">
             <div class="event-details">
@@ -841,79 +707,46 @@
 </section>
 
 
-<!-- Events Posters -->
-<section class="events-posters-section">
-    <h2>Events Posters</h2>
-    <div id="events-posters" class="carousel slide" data-bs-ride="carousel">
-      <div class="carousel-inner">
-        <div class="carousel-item custom-slide active">
-          <img src="event-posters/sta-summer-event-2025.png" class="d-block w-100" alt="Image 2">
-        </div>
-        <div class="carousel-item custom-slide">
-            <img src="event-posters/sta-wb-2025.png" class="d-block w-100" alt="Image 1">
-        </div>
-        <div class="carousel-item custom-slide">
-          <img src="event-posters/yoga-2025.jpeg" class="d-block w-100" alt="Image 3">
-        </div>
-        <div class="carousel-item custom-slide">
-            <img src="event-posters/sta-ugadi-2025.png" class="d-block w-100" alt="Image 3">
-        </div>
-        <div class="carousel-item custom-slide">
-            <img src="event-posters/sankranthi-2025.jpg" class="d-block w-100" alt="Image 3">
-        </div>                
-      </div>
-      <!-- Carousel Controls -->
-      <button class="carousel-control-prev" type="button" data-bs-target="#events-posters" data-bs-slide="prev">
-        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-        <span class="visually-hidden">Previous</span>
-      </button>
-      <button class="carousel-control-next" type="button" data-bs-target="#events-posters" data-bs-slide="next">
-        <span class="carousel-control-next-icon" aria-hidden="true"></span>
-        <span class="visually-hidden">Next</span>
-      </button>
-    </div>
-  </section>
-
 <!-- Gallery Section -->
 <section id="gallery" class="gallery">
     <h2>Events Gallery</h2>
     <div class="image-gallery">
-        <div class="image-item" onclick="window.open('https://www.snapu.photography/ClientGallery/Ugadi-Celebrations-Southend-On-Sea-2025', '_blank')">
+        <div class="image-item" onclick="handleLinkClick('ugadi2025','https://www.snapu.photography/ClientGallery/Ugadi-Celebrations-Southend-On-Sea-2025')">
             <img src="event-images/ugadi-1-2025.webp" alt="Image 4">
             <p class="image-name">Ugadi 2025</p>
             <!--<p class="image-count" id="ugadi2025-count">Clicked 0 times</p>-->
         </div>
-        <div class="image-item" onclick="window.open('https://www.snapu.photography/ClientGallery/Ugadi-Celebrations-Southend-On-Sea-2025', '_blank')">
+        <div class="image-item" onclick="handleLinkClick('ugadi2025','https://www.snapu.photography/ClientGallery/Ugadi-Celebrations-Southend-On-Sea-2025')">
             <img src="event-images/ugadi-2-2025.webp" alt="Image 4">
             <p class="image-name">Ugadi 2025</p> 
             <!--<p class="image-count" id="ugadi2025-count">Clicked 0 times</p>-->
         </div>        
-        <div class="image-item" onclick="window.open('https://www.snapu.photography/ClientGallery/Pongal-Celebrations-Southend-On-Sea-2025', '_blank')">
+        <div class="image-item" onclick="handleLinkClick('ugadi2025','https://www.snapu.photography/ClientGallery/Pongal-Celebrations-Southend-On-Sea-2025')">
             <img src="event-images/sankranthi-1-2025.webp" alt="Image 4">
             <p class="image-name">Sankranthi 2025</p> 
             <!--<p class="image-count" id="sankranthi2025-count">Clicked 0 times</p>-->
         </div>
-        <div class="image-item" onclick="window.open('https://www.snapu.photography/ClientGallery/Pongal-Celebrations-Southend-On-Sea-2025', '_blank')">
+        <div class="image-item" onclick="handleLinkClick('ugadi2025','hhttps://www.snapu.photography/ClientGallery/Pongal-Celebrations-Southend-On-Sea-2025')">
             <img src="event-images/sankranthi-2-2025.webp" alt="Image 5">
             <p class="image-name">Sankranthi 2025</p> 
             <!--<p class="image-count" id="sankranthi2025-count">Clicked 0 times</p>-->
         </div>
-        <div class="image-item" onclick="window.open('https://www.snapu.photography/ClientGallery/Pongal-Celebrations-Southend-On-Sea-2025', '_blank')">
+        <div class="image-item" onclick="handleLinkClick('ugadi2025','https://www.snapu.photography/ClientGallery/Pongal-Celebrations-Southend-On-Sea-2025')">
             <img src="event-images/sankranthi-3-2025.webp" alt="Image 6">
             <p class="image-name">Sankranthi 2025</p> 
             <!--<p class="image-count" id="sankranthi2025-count">Clicked 0 times</p>-->
         </div>        
-        <div class="image-item" onclick="window.open('https://www.snapu.photography/ClientGallery/Ugadi-Celebrations-Southend-On-Sea-2024', '_blank')">
+        <div class="image-item" onclick="handleLinkClick('ugadi2025','https://www.snapu.photography/ClientGallery/Ugadi-Celebrations-Southend-On-Sea-2024')">
             <img src="event-images/ugadi-1-2024.webp" alt="Image 1">
             <p class="image-name">Ugadi 2024</p> 
             <!--<p class="image-count" id="ugadi20254-count">Clicked 0 times</p>-->
         </div>
-        <div class="image-item" onclick="window.open('https://www.snapu.photography/ClientGallery/Ugadi-Celebrations-Southend-On-Sea-2024', '_blank')">
+        <div class="image-item" onclick="handleLinkClick('ugadi2025','https://www.snapu.photography/ClientGallery/Ugadi-Celebrations-Southend-On-Sea-2024')">
             <img src="event-images/ugadi-2-2024.webp" alt="Image 2">
             <p class="image-name">Ugadi 2024</p> 
             <!--<p class="image-count" id="ugadi2024-count">Clicked 0 times</p>-->
         </div>
-        <div class="image-item" onclick="window.open('https://www.snapu.photography/ClientGallery/Ugadi-Celebrations-Southend-On-Sea-2024', '_blank')">
+        <div class="image-item" onclick="handleLinkClick('ugadi2025','https://www.snapu.photography/ClientGallery/Ugadi-Celebrations-Southend-On-Sea-2024')">
             <img src="event-images/ugadi-3-2024.webp" alt="Image 3">
             <p class="image-name">Ugadi 2024</p> 
             <!--<p class="image-count" id="ugadi2024-count">Clicked 0 times</p>-->
@@ -962,31 +795,6 @@
             </div>
         </div>
     </section>
-
-<!-- Sponsors Section -->
-<section id="sponsors" class="sponsors">
-    <h2>Our Proud Sponsors</h2>
-    <div class="image-gallery">
-        <div class="sponsors-image-item">
-            <img style="object-fit: contain;" src="sponsors/ittalent.jpeg" alt="Image 4">
-        </div>
-        <div class="sponsors-image-item">
-            <img src="sponsors/fatpizza.jpeg" alt="Image 4">
-        </div>        
-        <div class="sponsors-image-item">
-            <img src="sponsors/saatri.jpeg" alt="Image 4">
-        </div>
-        <div class="sponsors-image-item">
-            <img src="sponsors/vedas.png" alt="Image 5">
-        </div>
-        <div class="sponsors-image-item">
-            <img style="object-fit: contain;" src="sponsors/mick.jpeg" alt="Image 6">
-        </div>        
-        <div class="sponsors-image-item">
-            <img src="sponsors/passionreels.jpeg" alt="Image 1">
-        </div>
-    </div>
-</section>    
 
     <!-- Contact Section -->
     <section id="about" class="contact">
@@ -1108,21 +916,9 @@
 
     <!-- Footer Section -->
     <footer class="footer">
-        <div class="footer-content">
         <p>&copy; 2025 Southend Telugu Association | All Rights Reserved</p>
-        <div class="follow-us">
-            <span>Follow Us:</span>
-            <div class="social-icons">
-                <a href="https://chat.whatsapp.com/FrbMISYT8Xo8TzIChjL8sk" target="_blank"><img src="followus-images/whatsapp.webp"></a>
-                <a href="https://www.facebook.com/share/1AbmamAaWJ/?mibextid=wwXIfr" target="_blank"><img src="followus-images/facebook.webp"></a>
-                <a href="https://www.instagram.com/southend.telugu.association/" target="_blank"><img src="followus-images/instagram.webp"></a>
-                <a href="mailto:southendteluguassociation@gmail.com"><img src="followus-images/gmail.webp"></a>
-                <a href="https://youtube.com" target="_blank"><img src="followus-images/youtube.webp"></a>
-                <a href="tel:+44 7776677286">📞</a>
-            </div>
-        </div>
-        </div>
     </footer>
+      </div>
     <!-- Bootstrap JS for Navbar -->
     <script src="admin-images-scatter.js" async></script>
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js" async></script>
